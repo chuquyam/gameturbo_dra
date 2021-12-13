@@ -1,0 +1,45 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Gameturbo- alugue seu jogo de videogame</title>
+	<meta charset="utf-8" />
+		   
+   	<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+	<script src="{% static 'js/script.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+</head>
+<body>
+<div>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+		 </div>
+		</nav>
+		</div>
+		
+		<div id="navegacao">
+			<div id="area">
+				<h1 id="logo"><span class="verde">Game</span>Turbo</h1>
+				<div id="menu">
+					<ul class="menu">
+						<a href="{% url 'home' %}">Home</a>
+						<a href="">Aluguel</a>
+						<a href="{% url 'listarcliente' %}">Clientes</a>
+						<a href="{% url 'listarjogo' %}">Jogos</a>
+						<a href="">Sobre</a>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div id="area-principal">
+			
+			<div id="postagem">
+				<img class="img-postagem" src="{% static 'img/logo.jpg' %}" width="100%">				
+			</div>
+		</div>
+</body>
+</html>
+

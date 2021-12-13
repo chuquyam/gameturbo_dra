@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang=pt-br> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scala=1.0" />
+    <title>Lista de Clientes</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    <script src="https://kit.fontawesome.com/f1225e8da4.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+ 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><span class="amarelo">Game</span>Turbo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Aluguel</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'listarjogo' %}">Jogo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Sobre</a>
+              </li>
+           </ul>
+          
+        </div>
+      </nav>
+     
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h3>Listagem de Clientes</h3>
+    </div>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        
+        <a href="/form"class="btn">Adicionar Novo Cliente
+        <i class="fas fa-plus-square"></i></a>
+       
+  
+
+    <div class="col-4 m-auto pt-2 pb-2 text-center">
+        <form method="get">
+            <input type="text" id="search" name="search" class="form-control" placeholder="buscar cliente"></input>
+            <i class="fas fa-search"></i>
+        </form>
+      
+    </div>
+</div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %}class="alert alert-{{message.tags}}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class="col-8 m-auto pt-4 pb-3 text-center">
+        <table border="1px" class="table" id="alter" >
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">idade</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for dbs in db %}
+                <tr>
+                    <td>{{dbs.id}}</td>
+                    <td>{{dbs.nome}}</td>
+                    <td>{{dbs.CPF}}</td>
+                    <td>{{dbs.email}}</td>
+                    <td>{{dbs.telefone}}</td>
+                    <td>{{dbs.idade}}</td>
+                    <td>
+                        <a href="/view/{{dbs.id}}/" class="fas fa-eye"></a>
+                        <a href="/edit/{{dbs.id}}/" class="fas fa-edit"></a>
+                        <a href="/delete/{{dbs.id}}/" class="fas fa-trash"></a>
+                    </td>
+                  </tr>
+
+                {% endfor %}
+
+                        
+            </tbody>
+          </table>
+          </div>
+          
+          <div class="pagination">
+            <span class="step-links">
+                {% if db.has_previous %}
+                    <a href="?page={{db.previous_page_number}}"><i class="fas fa-arrow-left"></i></a>
+                {% endif %}
+
+                <span class="current">
+                    {{ db.number }} de {{ db.paginator.num_pages }}</span>
+                {% if db.has_next %}
+                    <a href="?page={{db.next_page_number}}"><i class="fas fa-arrow-right"></i></a>
+                {% endif %}
+
+            </span>
+          </div>
+        
+    {% load static %}   
+        <script src="{% static 'locadora/static/javascript.js' %}"></script>       
+
+    
+
+</body>
+</html>

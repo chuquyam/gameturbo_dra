@@ -1,0 +1,68 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang=pt-br> 
+<head>
+    <meta charset="UTF-8">
+
+    <title>Cadastro de Cliente</title>
+
+    
+    
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+</head>
+<body>
+
+    <div id="area-principal">
+			
+        <div id="postagem">
+
+        <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h3>Cadastro de Clientes</h3>
+        <hr />
+    </div>
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+        <a href="/listarcliente/" class="btn btn-info">Voltar</a>
+    </div>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %}class="alert alert-{{message.tags}}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+      <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{% else %}/create/{% endif %}" method="post">
+        {% csrf_token %}
+        {{crispy}}
+        <!--{{form.as_p}}-->
+     <p>Nome:</p>
+     <div class="form-group mt-4">{{form.nome}}</div>
+     <p>CPF:</p>
+     <div class="form-group mt-4">{{form.CPF}}</div>
+     <p>E-mail:</p>
+     <div class="form-group mt-4">{{form.email}}</div>
+     <p>Telefone:</p>
+     <div class="form-group mt-4">{{form.telefone}}</div>
+     <p>Idade:</p>
+     <div class="form-group mt-4">{{form.idade}}</div>
+     <input type="submit" class="btn btn-success" value="Salvar">
+    </form>
+    </div>
+    
+    {% load static %}   
+        <script src="{% static 'locadora/static/javascript.js' %}"></script>       
+
+        </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

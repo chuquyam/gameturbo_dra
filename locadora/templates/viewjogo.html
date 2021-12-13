@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang=pt-br> 
+<head>
+    <meta charset="UTF-8">
+
+    <title>Visualização</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    
+
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h3>Visualização dos Jogos Cadastrados</h3>
+        <hr />
+    </div>
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+        <a href="/listarjogo/" class="btn btn-info">Voltar</a>
+    </div>
+
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+      <strong>Titulo: </strong>{{db.titulo}}<br>
+      <strong>Tipo: </strong>{{db.tipo}}<br>
+      <strong>Fabricante: </strong>{{db.fabricante}}<br>
+      <strong>plataforma: </strong>{{db.plataforma}}<br>
+      <strong>faixaetaria: </strong>{{db.faixaetaria}}<br>
+      <strong>quantidade: </strong>{{db.quantidade}}<br>
+      <strong>preco: </strong>{{db.preco}}<br>
+    </div>
+    
+
+</body>
+</html>

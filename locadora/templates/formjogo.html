@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang=pt-br> 
+<head>
+    <meta charset="UTF-8">
+
+    <title>Cadastro de Jogos</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    
+
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h3>Cadastro de Jogos</h3>
+        <hr />
+    </div>
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+        <a href="/listarjogo/" class="btn btn-info">Voltar</a>
+    </div>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %}class="alert alert-{{message.tags}}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+      <form name="formjogo" id="formjogo" action="{% if db %}/updatejogo/{{db.id}}/{% else %}/createjogo/{% endif %}" method="post">
+        {% csrf_token %}
+     <!-- {{form.as_p}}-->
+     <p>Título:</p>
+     <div class="form-group mt-4">{{formjogo.titulo}}</div>
+     <p>Tipo:</p>
+     <div class="form-group mt-4">{{formjogo.tipo}}</div>
+     <p>Fabricantel:</p>
+     <div class="form-group mt-4">{{formjogo.fabricante}}</div>
+     <p>Plataforma:</p>
+     <div class="form-group mt-4">{{formjogo.plataforma}}</div>
+     <p>Faixa etária:</p>
+     <div class="form-group mt-4">{{formjogo.faixaetaria}}</div>
+     <p>Quantidade:</p>
+     <div class="form-group mt-4">{{formjogo.quantidade}}</div>
+     <p>Preço:</p>
+     <div class="form-group mt-4">{{formjogo.preco}}</div>
+     <input type="submit" class="btn btn-success" value="Salvar">
+    </form>
+    </div>
+    
+    {% load static %}   
+        <script src="{% static 'locadora/static/javascript.js' %}"></script>       
+
+</body>
+</html>
